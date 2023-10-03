@@ -23,7 +23,7 @@ public class SistemKasir {
             if (total >= 300000) {
                 diskon = total * 0.5;
             } else
-                System.out.println("GAK OLEH DISKON TOL");
+                System.out.println("Tidak dapat diskon");
         }
 
     }
