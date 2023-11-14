@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
-public class SistemKasir {
+public class kasirLagi {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         int menu;
         boolean berhasilMasuk = false;
+
         while (!berhasilMasuk) {
             System.out.println("*****Login Kasir*****");
             System.out.println("*********************");
@@ -29,6 +31,7 @@ public class SistemKasir {
                 continue;
             }
         }
+
         do {
             System.out.println("Menu : ");
             System.out.println("1. Transaksi");
@@ -36,8 +39,10 @@ public class SistemKasir {
             System.out.println("3. Laporan Pendapatan");
             System.out.println("4. Exit");
             System.out.print("Pilih menu : ");
+
             menu = sc.nextInt();
             sc.nextLine();
+
             switch (menu) {
                 case 1:
                     // Add code for Transaksi
@@ -48,9 +53,11 @@ public class SistemKasir {
                             "Saus cabai ABC", "Telur 1 box", "Kecap manis", "Kecap asin", "Saori saus tiram",
                             "Saori teriyaki",
                             "Saori Lada hitam", "Penyedap", "Rokok" };
+
                     String member, beliLagi;
                     int hargaBarang, jmlBarang, totalBayar = 0;
                     double diskon, bayar, total;
+
                     System.out.println(namaBarang[0]); // menampilkan Beras
                     System.out.println(namaBarang[1]); // menampilkan Minyak
                     System.out.println(namaBarang[2]); // menampilkan Gula
@@ -71,13 +78,16 @@ public class SistemKasir {
                     System.out.println(namaBarang[17]); // menampilkan Saori Lada hitam
                     System.out.println(namaBarang[18]); // menampilkan Penyedap
                     System.out.println(namaBarang[19]); // menampilkan Rokok
+
                     System.out.println("-----------------------------");
                     System.out.println("-----------BAR MART----------");
                     System.out.println("-----------------------------");
+
                     System.out.print("Kasir: ");
                     String namaKasir = sc.nextLine();
                     System.out.print("A/N: ");
                     String namaPelanggan = sc.nextLine();
+
                     do {
                         System.out.println("Masukkan nama barang: ");
                         String inputNamaBarang = sc.nextLine();
@@ -91,6 +101,7 @@ public class SistemKasir {
                         total = hargaBarang * jmlBarang;
                         totalBayar += total;
                     } while (beliLagi.equals("y"));
+
                     System.out.println("Total harga belanjaan anda Rp " + totalBayar);
                     sc.nextLine();
                     System.out.println("Apakah anda punya kartu member (ya atau tidak)? :");
@@ -104,6 +115,7 @@ public class SistemKasir {
                         bayar = totalBayar - diskon;
                         System.out.println("Diskon: Rp " + diskon);
                         System.out.println("Total yang harus dibayar: Rp " + bayar);
+
                     } else {
                         if (totalBayar >= 300000) {
                             diskon = totalBayar * 0.05;
@@ -115,6 +127,7 @@ public class SistemKasir {
                         }
                     }
                     break;
+
                 case 2:
                     // Add code for Update stok
                     System.out.println("*****Update stok menu selected*****");
@@ -122,13 +135,16 @@ public class SistemKasir {
                     // Membuat array dua dimensi untuk menyimpan informasi barang
                     String[][] barang = new String[100][4];
                     int jumlahBarang = 0;
+
                     while (true) {
                         System.out.println("\nMenu:");
                         System.out.println("1. Update stok barang");
                         System.out.println("2. Tampilkan stok barang");
                         System.out.println("3. Keluar");
+
                         System.out.print("Pilih menu (1/2/3): ");
                         int pilihan = sc.nextInt();
+
                         if (pilihan == 1) {
                             System.out.print("Nama barang: ");
                             String nama = sc.next();
@@ -137,11 +153,13 @@ public class SistemKasir {
                             System.out.print("Jumlah stok: ");
                             int stok = sc.nextInt();
                             double totalHarga = harga * stok;
+
                             barang[jumlahBarang][0] = nama;
                             barang[jumlahBarang][1] = Double.toString(harga);
                             barang[jumlahBarang][2] = Integer.toString(stok);
                             barang[jumlahBarang][3] = Double.toString(totalHarga);
                             jumlahBarang++;
+
                             System.out.println("Barang ditambahkan!");
                         } else if (pilihan == 2) {
                             System.out.println("Daftar barang:\n");
@@ -166,6 +184,8 @@ public class SistemKasir {
                             System.out.println("SaoriLd\t2000\t50\t100000");
                             System.out.println("Penydp\t500\t100\t50000");
                             System.out.println("Rokok X\t25000\t24\t600000");
+
+
                             for (int i = 0; i < jumlahBarang; i++) {
                                 System.out.println(
                                         barang[i][0] + "\t" + barang[i][1] + "\t" + barang[i][2] + "\t" + barang[i][3]);
@@ -178,28 +198,36 @@ public class SistemKasir {
                         }
                     }
                     break;
+
                 case 3:
                     System.out.println("*****Laporan Pendapatan menu selected*****");
                     System.out.println("******************************************");
                     // inisiasi variabel
                     int jumlahHari, jmlTransaksi;
                     double totPendapatanHarian = 0, totPendapatanBulanan = 0;
+
                     // Input jumlah hari dalam sebulan
                     System.out.print("Masukkan jumlah hari dalam sebulan: ");
                     jumlahHari = sc.nextInt();
+
                     // Perulangan untuk setiap hari dalam sebulan
                     for (int hari = 1; hari <= jumlahHari; hari++) {
                         System.out.println("\nHari ke-" + hari);
+
                         // Input jumlah transaksi harian
                         System.out.print("Masukkan jumlah transaksi harian: ");
                         jmlTransaksi = sc.nextInt();
+
                         // perulangan untuk traksaksi harian
                         for (int i = 1; i < jmlTransaksi; i++) {
                             System.out.println("Transaksi ke-" + i);
+
                             // input jumlah barang belanjaan
                             System.out.print("Masukkan jumlah barang belanjaan : ");
                             jumlahBarang = sc.nextInt();
+
                             double totalHarga = 0;
+
                             // perulangan setiap barang belanja
                             for (int j = 1; j <= jumlahBarang; j++) {
                                 System.out.println("\nBarang ke- " + j);
@@ -209,33 +237,46 @@ public class SistemKasir {
                                 double inputHargaBarang = sc.nextDouble();
                                 System.out.print("Masukkan jumlah barang : ");
                                 int jumlah = sc.nextInt();
+
                                 // hitung total harga untuk barang tertentu
                                 double totalBarang = inputHargaBarang * jumlah;
+
                                 // Menambahkan totalBarang ke totalHarga transaksi
                                 totalHarga += totalBarang;
                             }
+
                             // Menambahkan totalHarga transaksi ke totalPendapatan
                             totPendapatanHarian += totalHarga;
+
                             // Menampilkan totalHarga Transaksi
                             System.out.println("Total harga transaksi ke-" + i + ": Rp " + totalHarga);
+
                         }
+
                         // Menambahkan totalPendapatan harian ke totalPendapatan bulanan
                         totPendapatanBulanan += totPendapatanHarian;
+
                         // Luaran total pendapatan harian
                         System.out.println("Total Pendapatan harian : Rp " + totPendapatanHarian);
+
                     }
+
                     // Output total pendapatan bulanan
                     System.out.println("\nTotal Pendapatan Bulanan: Rp " + totPendapatanBulanan);
+
                     // tutup scanner
                     sc.close();
+
                     // Add other cases for remaining menu options
-                case 4:
+                case 6:
                     System.out.println("*****Exiting program. Goodbye!*****");
                     break;
                 default:
                     System.out.println("Menu not recognized. Please choose a valid option.");
             }
         } while (menu != 4);
+
         sc.close(); // Close the scanner to prevent resource leak
+
     }
 }
