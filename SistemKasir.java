@@ -231,7 +231,7 @@ public class SistemKasir {
                         //tutup scanner
                         sc.close();
                 case 5:
-                    System.out.println("Exit");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Menu not recognized. Please choose a valid option.");
