@@ -128,7 +128,6 @@ public class SistemKasir {
                     }
                     break;
 
-                
                 default:
                     System.out.println("Menu not recognized. Please choose a valid option.");
             }
