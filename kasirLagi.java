@@ -185,7 +185,6 @@ public class kasirLagi {
                             System.out.println("Penydp\t500\t100\t50000");
                             System.out.println("Rokok X\t25000\t24\t600000");
 
-
                             for (int i = 0; i < jumlahBarang; i++) {
                                 System.out.println(
                                         barang[i][0] + "\t" + barang[i][1] + "\t" + barang[i][2] + "\t" + barang[i][3]);
