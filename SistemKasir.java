@@ -1,11 +1,8 @@
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
 
 public class SistemKasir {
-    /**
-     * @param args
-     */
+    
     static String beliLagi;
     static String member, tgl, namaKasir, namaPelanggan, inputNamaBarang;
     static int jmlBarang, totalBayar = 0;
@@ -13,46 +10,48 @@ public class SistemKasir {
     static String user1 = "Renald", user2 = "Belqis", user3 = "Aqila", username, password,
             userPw1 = "Renald123", userPw2 = "Belqis123", userPw3 = "Aqila123";
     static String[] namaBarang = { "Beras", "Minyak", "Gula", "Sabun", "Susu" };
+    //nama barang dijadikan array yang new, terus yang atas itu 
     static int[] hargaBarang = { 15000, 10000, 12000, 5000, 12000 };
     static int[] stokBarang = { 100, 50, 80, 120, 70 };
     static String barang[][] = new String[100][3];
     static int menu;
     static boolean berhasilMasuk = false;
+    static double totPendapatanHarian = 0, totPendapatanBulanan = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        //Login kasir
+        // Login kasir
         while (!berhasilMasuk) {
-             System.out.println("*********************");
-             System.out.println("*                   *");
-             System.out.println("*    Login Kasir    *");
-             System.out.println("*                   *");
-             System.out.println("*********************");
-             System.out.print("Masukkan username : ");
-             username = sc.next();
-             System.out.print("Masukkan password : ");
-             password = sc.next();
-             if (username.equalsIgnoreCase(user1) && password.equals(userPw1)) {
-                 System.out.println("---------------------------");
-                 System.out.println("|   Selamat datang Renald  |");
-                 System.out.println("---------------------------");
-                 break;
-                } else if (username.equalsIgnoreCase(user2) && password.equals(userPw2)) {
+            System.out.println("*********************");
+            System.out.println("*                   *");
+            System.out.println("*    Login Kasir    *");
+            System.out.println("*                   *");
+            System.out.println("*********************");
+            System.out.print("Masukkan username : ");
+            username = sc.next();
+            System.out.print("Masukkan password : ");
+            password = sc.next();
+            if (username.equalsIgnoreCase(user1) && password.equals(userPw1)) {
+                System.out.println("---------------------------");
+                System.out.println("|   Selamat datang Renald  |");
+                System.out.println("---------------------------");
+                break;
+            } else if (username.equalsIgnoreCase(user2) && password.equals(userPw2)) {
                 System.out.println("---------------------------");
                 System.out.println("|   Selamat datang Belqis  |");
                 System.out.println("---------------------------");
                 break;
-                } else if (username.equalsIgnoreCase(user3) && password.equals(userPw3)) {
+            } else if (username.equalsIgnoreCase(user3) && password.equals(userPw3)) {
                 System.out.println("---------------------------");
                 System.out.println("|   Selamat datang Aqila  |");
                 System.out.println("---------------------------");
                 break;
-                } else {
+            } else {
                 System.out.println("---------------------------");
                 System.out.println("|GAGAL MASUK DAN COBA LAGI!|");
                 System.out.println("---------------------------");
                 continue;
-             }
+            }
         }
 
         do {
@@ -138,6 +137,8 @@ public class SistemKasir {
                             System.out.println("Tidak dapat diskon");
                         }
                     }
+                    totPendapatanHarian += totalBayar;
+                    totPendapatanBulanan += totPendapatanHarian;
                     break;
                 case 2: // Cetak Struk
                     System.out.println("||===================================================||");
@@ -186,24 +187,24 @@ public class SistemKasir {
                             }
                         }
                         // Apabila barang tidak ditemukan
-                        if (index == -1) {
-                            barang[jmlBarang][0] = inputNamaBarang;
-                            barang[jmlBarang][1]= Double.toString(hargaBarang);
-                            barang[jmlBarang][2]= Integer.toString(stokBarang);
-                            jmlBarang++;
-                            continue;
-                        }
+
                         System.out.println("Harga: " + hargaBarang[index]);
 
-                        if (index != -1) {
-                            System.out.print("Masukkan jumlah barang: ");
-                            jmlBarang = sc.nextInt();
-                            stokBarang[index] += jmlBarang;
+                        if (index == -1) {
+                            System.out.println("Barang tidak ditemukan.");
+                        } else {
+                            System.out.println("Harga: " + hargaBarang[index]);
+                    
+                            System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
+                            int jumlahTambahStok = sc.nextInt();
+                            stokBarang[index] += jumlahTambahStok;
+                    
+                            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
                         }
+                case 5: //pendapatan
             }
         } while (menu != 6);
 
         sc.close(); // Close the scanner to prevent resource leak
 }
 }
-    
