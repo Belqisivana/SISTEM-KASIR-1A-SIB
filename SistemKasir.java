@@ -202,6 +202,8 @@ public class SistemKasir {
                             System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
                         }
                 case 5: //pendapatan
+                    System.out.println("Total Pendapatan Harian: Rp " totPendapatanHarian);
+                    System.out.println("Total Pendapatan Bulanan: Rp " totPendapatanBulanan);
             }
         } while (menu != 6);
 
