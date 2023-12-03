@@ -3,30 +3,51 @@ import java.util.Scanner;
 
 public class SistemKasir {
     
-    static String beliLagi;
-    static String member, tgl, namaKasir, namaPelanggan, inputNamaBarang;
-    static int jmlBarang, totalBayar = 0;
-    static double diskon, bayar, total, tunai, kembalian;
+    static String beliLagi, member, tgl, namaKasir, namaPelanggan, inputNamaBarang, targetBarang, namaBarangBaru, cariIndexBarang;
+    static int jmlBarang = 0, totalBayar = 0, stokBarangBaru, tambahStokBarang, sokBarang =  0, metodePembayaran;
+    static double diskon = 0, bayar, total, tunai, kembalian, hargaBarangBaru, yangDibayarkan;
     static String user1 = "Renald", user2 = "Belqis", user3 = "Aqila", username, password,
-            userPw1 = "Renald123", userPw2 = "Belqis123", userPw3 = "Aqila123";
-    static String[] namaBarang = { "Beras", "Minyak", "Gula", "Sabun", "Susu" };
-    //nama barang dijadikan array yang new, terus yang atas itu 
+            userPw1 = "Renald123", userPw2 = "Belqis123", userPw3 = "Aqila123"; 
     static int[] hargaBarang = { 15000, 10000, 12000, 5000, 12000 };
-    static int[] stokBarang = { 100, 50, 80, 120, 70 };
+    static String namaBarang[] = new String [5];
+    //static int hargaBarang[] = new int[5];
+    static int stokBarang [] = new int [5];
     static String barang[][] = new String[100][3];
     static int menu;
     static boolean berhasilMasuk = false;
     static double totPendapatanHarian = 0, totPendapatanBulanan = 0;
 
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        namaBarang[jmlBarang] = "Beras";
+        stokBarang[jmlBarang] = 100;
+        jmlBarang++;
+        namaBarang[jmlBarang] = "Minyak";
+        stokBarang[jmlBarang] = 50;
+        jmlBarang++;
+        namaBarang[jmlBarang] = "Gula";
+        stokBarang[jmlBarang] = 80;
+        jmlBarang++;
+        namaBarang[jmlBarang] = "Sabun";
+        stokBarang[jmlBarang] = 120;
+        jmlBarang++;
+        namaBarang[jmlBarang] = "Susu";
+        stokBarang[jmlBarang] = 70;
+        jmlBarang++;
+
+
         // Login kasir
         while (!berhasilMasuk) {
-            System.out.println("*********************");
-            System.out.println("*                   *");
-            System.out.println("*    Login Kasir    *");
-            System.out.println("*                   *");
-            System.out.println("*********************");
+            System.out.println("*******************************");
+            System.out.println("*                             *");
+            System.out.println("*          LOGIN KASIR        *");
+            System.out.println("*                             *");
+            System.out.println("*******************************");
             System.out.print("Masukkan username : ");
             username = sc.next();
             System.out.print("Masukkan password : ");
@@ -126,39 +147,54 @@ public class SistemKasir {
                         bayar = totalBayar - diskon;
                         System.out.println("Diskon: Rp " + diskon);
                         System.out.println("Total yang harus dibayar: Rp " + bayar);
-
+                        System.out.print("Tunai : ");
+                        yangDibayarkan = sc.nextDouble();
+                        kembalian = yangDibayarkan - bayar;
+                        System.out.println("Kembalian: " + kembalian);
                     } else {
                         if (totalBayar >= 300000) {
                             diskon = totalBayar * 0.05;
                             bayar = totalBayar - diskon;
                             System.out.println("Hasil diskon " + diskon);
                             System.out.println("Total yang harus dibayar: Rp " + bayar);
-                        } else {
+                            System.out.print("Tunai : ");
+                            yangDibayarkan = sc.nextDouble();
+                            kembalian = yangDibayarkan - bayar;
+                            System.out.println("Kembalian: " + kembalian);
+                        } else if (totalBayar < 300000) {
                             System.out.println("Tidak dapat diskon");
+                            System.out.print("Tunai : ");
+                            yangDibayarkan = sc.nextDouble();
+                            kembalian = yangDibayarkan - totalBayar;
+                            System.out.println("Kembalian: " + kembalian);
                         }
                     }
+
+
                     totPendapatanHarian += totalBayar;
                     totPendapatanBulanan += totPendapatanHarian;
+                    totPendapatanHarian = 0;
                     break;
                 case 2: // Cetak Struk
-                    System.out.println("||===================================================||");
-                    System.out.println("||                    BAR MART                       ||");
-                    System.out.println("||                Struk Pembayaran                   ||");
-                    System.out.println("||===================================================||");
-                    System.out.println("||Kasir : " + username + "||");
-                    System.out.println("||Nama Pelanggan : " + namaPelanggan + "||");
-                    System.out.println("||Tanggal transaksi : " + tgl + "||");
-                    // System.out.println("||" +namaBarang[i]+ "||");
-                    System.out.println("||" + jmlBarang + "\nx" + hargaBarang + "\n=" + total + "||");
-                    System.out.println("-----------------------------------------------------||");
-                    System.out.println("||Total Belanja                     Rp:" + totalBayar + "||");
-                    System.out.println("||Diskon                            Rp:" + diskon + "||");
-                    System.out.println("||---------------------------------------------------||");
-                    System.out.println("||TOTAL                             Rp:" + bayar + "||");
-                    System.out.println("||---------------------------------------------------||");
-                    System.out.println("||Tunai                              Rp:" + tunai + "||");
-                    System.out.println("||Kembalian                        Rp:" + kembalian + "||");
-                    System.out.println("||===================================================||");
+                System.out.println("||===================================================||");
+                System.out.println("||                    BAR MART                       ||");
+                System.out.println("||                Struk Pembayaran                   ||");
+                System.out.println("||===================================================||");
+                System.out.println("||Kasir : " + username + "||");
+                System.out.println("||Nama Pelanggan : " + namaPelanggan + "||");
+                System.out.println("||Tanggal transaksi : " + tgl + "||");
+                // System.out.println("||" +namaBarang[i]+ "||");
+                System.out.println("||" + jmlBarang + "\nx" + hargaBarang + "\n=" + total + "||");
+                System.out.println("-----------------------------------------------------||");
+                System.out.println("||Total Belanja                     Rp:" + totalBayar + "||");
+                System.out.println("||Diskon                            Rp:" + diskon + "||");
+                System.out.println("||---------------------------------------------------||");
+                System.out.println("||TOTAL                             Rp:" + bayar + "||");
+                System.out.println("||---------------------------------------------------||");
+                System.out.println("||Tunai                              Rp:" + yangDibayarkan + "||");
+                System.out.println("||Kembalian                        Rp:" + kembalian + "||");
+                System.out.println("||===================================================||");
+                break;
 
                 case 3: // Daftar stok Barang
 
@@ -177,33 +213,33 @@ public class SistemKasir {
                     break;
                 case 4: //Tambah Stok 
                 System.out.print("Masukkan nama barang: ");
-                        inputNamaBarang = sc.nextLine();
-                        // temukan indeks hargaBarang dari inputNamaBarang di Array
-                        int index = -1;
-                        for (int i = 0; i < namaBarang.length; i++) {
-                            if (namaBarang[i].equalsIgnoreCase(inputNamaBarang)) {
-                                index = i;
-                                break;
-                            }
+                    inputNamaBarang = sc.nextLine();
+                    // temukan indeks hargaBarang dari inputNamaBarang di Array
+                    int index = -1;
+                    for (int i = 0; i < namaBarang.length; i++) {
+                        if (namaBarang[i].equalsIgnoreCase(inputNamaBarang)) {
+                            index = i;
+                            break;
                         }
-                        // Apabila barang tidak ditemukan
+                    }
+                    // Apabila barang tidak ditemukan
 
+                    System.out.println("Harga: " + hargaBarang[index]);
+
+                    if (index == -1) {
+                        System.out.println("Barang tidak ditemukan.");
+                    } else {
                         System.out.println("Harga: " + hargaBarang[index]);
 
-                        if (index == -1) {
-                            System.out.println("Barang tidak ditemukan.");
-                        } else {
-                            System.out.println("Harga: " + hargaBarang[index]);
-                    
-                            System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
-                            int jumlahTambahStok = sc.nextInt();
-                            stokBarang[index] += jumlahTambahStok;
-                    
-                            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
-                        }
+                        System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
+                        int jumlahTambahStok = sc.nextInt();
+                        stokBarang[index] += jumlahTambahStok;
+
+                        System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak "
+                                + jumlahTambahStok + " unit.");
+                    }
+                    break;
                 case 5: //pendapatan
-                    System.out.println("Total Pendapatan Harian: Rp " totPendapatanHarian);
-                    System.out.println("Total Pendapatan Bulanan: Rp " totPendapatanBulanan);
             }
         } while (menu != 6);
 
