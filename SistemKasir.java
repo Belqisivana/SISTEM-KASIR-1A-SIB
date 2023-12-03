@@ -240,6 +240,8 @@ public class SistemKasir {
                     }
                     break;
                 case 5: //pendapatan
+                      System.out.println("Total Pendapatan Harian: Rp " totPendapatanHarian);
+                    System.out.println("Total Pendapatan Bulanan: Rp " totPendapatanBulanan);
             }
         } while (menu != 6);
 
