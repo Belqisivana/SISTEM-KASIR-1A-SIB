@@ -1,12 +1,10 @@
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class SistemKasir {
     
     static String beliLagi, member, namaKasir, namaPelanggan, inputNamaBarang, targetBarang, namaBarangBaru, cariIndexBarang, SimpleDateFormat, s,  dateFormatetted;
     static int jmlBarang = 0, totalBayar = 0, stokBarangBaru, tambahStokBarang, metodePembayaran, hargaBarangBaru, menu;
-    static double diskon = 0, bayar, total, tunai, kembalian, yangDibayarkan, totPendapatanHarian = 0, totPendapatanBulanan = 0;
+    static double diskon = 0, bayar, total, tunai, kembalian, yangDibayarkan , totPendapatanBulanan = 0;
     static boolean berhasilMasuk = false, barangSudahAda;
     static String user1 = "Renald", user2 = "Belqis", user3 = "Aqila", username, password,
             userPw1 = "Renald123", userPw2 = "Belqis123", userPw3 = "Aqila123"; 
@@ -17,6 +15,13 @@ public class SistemKasir {
     static String namaBarang[] = new String [100];
     static int stokBarang [] = new int [100];
     static int hargaBarang[] = new int [100];
+    static String tanggal [] = new String [100];
+    static int a = 0, b = 0, c, d;
+    static int totPendapatanHarian [] = new int[100];
+    static String namaBarangStruk [] = new String [5];
+    static int hargaBarangStruk [] =  new int[5];
+    static double totalHargaBarangStruk [] =  new double[5];
+    static int jumlahbarangStruk [] = new int[5];
 
     
 
@@ -101,7 +106,7 @@ public class SistemKasir {
         sc.nextLine();
             switch (menu) {
                 case 1:
-                    transaksi(sc);
+                    transaksi();
                     break;
                 case 2:
                     cetakStruk();
@@ -125,22 +130,23 @@ public class SistemKasir {
     }
 
     // Fungsi Transaksi
-    private static void transaksi(Scanner sc) {
+        public static void transaksi() {
+        Scanner sc = new Scanner(System.in);
+        c = 0;
+        d = 0;
+        totalBayar = 0;
+        totPendapatanHarian [b] = 0;
         System.out.println("Kasir: " + username);
         System.out.print("A/N: ");
         namaPelanggan = sc.nextLine();
         System.out.print("Tanggal transaksi : ");
-        Date d = new Date();
-        s ="dd-MM-yyyy";
-        SimpleDateFormat sd = new SimpleDateFormat(s);
-
-        dateFormatetted = sd.format(d);
-        System.out.println(dateFormatetted);
-
+        tanggal [a] = sc.nextLine();
         boolean beliBarang = true;
         while (beliBarang) {
             System.out.print("Masukkan nama barang: ");
             inputNamaBarang = sc.nextLine();
+            namaBarangStruk [c] = inputNamaBarang;
+            c++;
             // temukan indeks hargaBarang dari inputNamaBarang di Array
             int index = -1;
             for (int i = 0; i < namaBarang.length; i++) {
@@ -155,16 +161,21 @@ public class SistemKasir {
                 continue;
             }
             System.out.println("Harga: " + hargaBarang[index]);
+            hargaBarangStruk [d] = hargaBarang [index];
+
            
             if (index != -1) {
                 System.out.print("Masukkan jumlah barang: ");
                 jmlBarang = sc.nextInt();
                 stokBarang[index] -= jmlBarang;
+                jumlahbarangStruk [d] = jmlBarang;
                 System.out.print("Beli lagi (y/n)? ");
                 beliLagi = sc.next();
                 sc.nextLine();
                 total = hargaBarang[index] * jmlBarang;
+                totalHargaBarangStruk [d] = total;
                 totalBayar += total;
+                d++;
                 if (beliLagi.equalsIgnoreCase("y")) {
                 beliBarang = true;
             } else if (beliLagi.equalsIgnoreCase("n")) {
@@ -212,9 +223,11 @@ public class SistemKasir {
             }
         }
 
-        totPendapatanHarian += totalBayar;
-        totPendapatanBulanan += totPendapatanHarian;
-        totPendapatanHarian = 0;
+        totPendapatanHarian [b] += totalBayar;
+        totPendapatanBulanan += totPendapatanHarian [b];
+        a++;
+        b++;
+        
     }
 
     // Fungsi Cetak Struk
@@ -225,7 +238,14 @@ public class SistemKasir {
         System.out.println("||===================================================||");
         System.out.println("  Kasir : " + username );
         System.out.println("  Nama Pelanggan : " + namaPelanggan );
-        System.out.println("  Tanggal transaksi : " + dateFormatetted );
+        System.out.println("  Tanggal transaksi : " + tanggal [a-1] );
+        System.out.println("  Nama Barang : ");
+        for (int i = 0 ; i < c ; i++) {
+            System.out.print("  " + namaBarangStruk [i]);
+            System.out.print(" "+ hargaBarangStruk [i]);
+            System.out.print(" X " + jumlahbarangStruk[i]);
+            System.out.println(" total: " + totalHargaBarangStruk [i]);
+        }
         // System.out.println( cetakNamaBarang [i]+ );  
         // System.out.println( + jmlBarang[index] + "\nx" + hargaBarang + "\n=" + total );
         System.out.println("-------------------------------------------------------");
@@ -324,7 +344,10 @@ public class SistemKasir {
 
     // Fungsi Laporan Pendapatan
     private static void laporanPendapatan() {
-        System.out.println("Total Pendapatan Harian: Rp "  + totPendapatanHarian);
+        for (int i = 0; i < a ; i++) {
+            System.out.print("Total Pendapatan tanggal " + tanggal [i] + " : ");
+            System.out.println(totPendapatanHarian [i]);
+        }
         System.out.println("Total Pendapatan Bulanan: Rp "  + totPendapatanBulanan);
     }
 }
