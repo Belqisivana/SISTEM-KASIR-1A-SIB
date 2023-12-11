@@ -283,6 +283,8 @@ public class SistemKasir {
             System.out.println("||===================================================||");
             System.out.println("||                    BAR MART                       ||");
             System.out.println("||                Struk Pembayaran                   ||");
+            System.out.println("||   Jl. Soekarno Hatta No. 9 Kelurahan Jatimulyo,   ||");
+            System.out.println("|| Kecamatan Lowokwaru, Kota Malang,Jawa Timur 65141 || ");
             System.out.println("||===================================================||");
             System.out.println("  Kasir : " + username );
             System.out.println("  Nama Pelanggan : " + namaPelanggan );
@@ -302,6 +304,9 @@ public class SistemKasir {
             System.out.println("-------------------------------------------------------");
             System.out.println("  Tunai                             Rp:" + yangDibayarkan);
             System.out.println("  Kembalian                         Rp:" + kembalian);
+            System.out.println("=======================================================");
+            System.out.println("            TERIMAKASIH ATAS KUNJUNGANNYA              ");
+            System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
             System.out.println("=======================================================");
         }
 
