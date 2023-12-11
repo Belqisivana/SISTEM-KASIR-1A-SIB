@@ -259,10 +259,13 @@ public class SistemKasir {
                     System.out.println("Kembalian: " + kembalian);
                 }
             } else if (metode == 2) {
-                System.out.println("Transfer bank BRI");
-                System.out.println("2341760022----------Aqila Nur Azza");
-                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
-                System.out.println("2341760090----------Renald Agustinus");
+                System.out.println("-----------------------------------------------------");
+                System.out.println("||              Transfer bank BRI                  ||");
+                System.out.println("-----------------------------------------------------");
+                System.out.println("|| 2341760022----------Aqila Nur Azza              ||");
+                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany ||");
+                System.out.println("|| 2341760090----------Renald Agustinus            ||");
+                System.out.println("-----------------------------------------------------");
                 if (totalBayar >= 200000) {
                     diskon = totalBayar * 0.15;
                     bayar = totalBayar - diskon;
@@ -312,10 +315,13 @@ public class SistemKasir {
                     System.out.println("Kembalian: " + kembalian);
                 }
             } else if (metode == 2) {
-                System.out.println("Transfer bank BRI");
-                System.out.println("2341760022----------Aqila Nur Azza");
-                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
-                System.out.println("2341760090----------Renald Agustinus");
+                System.out.println("-----------------------------------------------------");
+                System.out.println("||              Transfer bank BRI                  ||");
+                System.out.println("-----------------------------------------------------");
+                System.out.println("|| 2341760022----------Aqila Nur Azza              ||");
+                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany ||");
+                System.out.println("|| 2341760090----------Renald Agustinus            ||");
+                System.out.println("-----------------------------------------------------");
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
@@ -431,8 +437,7 @@ public class SistemKasir {
             stokBarang[index] += jumlahTambahStok;
 
             System.out.println("---------------------------------------------------------------------------------");
-            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak "
-                    + jumlahTambahStok + " unit.");
+            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
             System.out.println("---------------------------------------------------------------------------------");
         }
     }
