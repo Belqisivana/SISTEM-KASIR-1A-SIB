@@ -263,12 +263,19 @@ public class SistemKasir {
                 System.out.println("2341760022----------Aqila Nur Azza");
                 System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
                 System.out.println("2341760090----------Renald Agustinus");
+                if (totalBayar >= 200000) {
+                    diskon = totalBayar * 0.15;
+                    bayar = totalBayar - diskon;
+                    System.out.println("Hasil diskon " + diskon);
+                } else if (totalBayar < 200000) {
+                    System.out.println("Tidak dapat diskon");
+                }
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
 
             }
-        } else {
+        } else if (member.equals("tidak")) {
             System.out.println("Metode pembayaran");
             System.out.println("1. Tunai");
             System.out.println("2. Transfer bank BRI");
