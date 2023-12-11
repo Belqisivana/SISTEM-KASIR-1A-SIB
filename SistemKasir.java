@@ -263,7 +263,6 @@ public class SistemKasir {
                 System.out.println("2341760022----------Aqila Nur Azza");
                 System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
                 System.out.println("2341760090----------Renald Agustinus");
-
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
@@ -310,8 +309,6 @@ public class SistemKasir {
                 System.out.println("2341760022----------Aqila Nur Azza");
                 System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
                 System.out.println("2341760090----------Renald Agustinus");
-                System.out.print("Akun dipilih: ");
-                akun = sc.nextLine();
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
@@ -345,22 +342,22 @@ public class SistemKasir {
             System.out.print(" X " + jumlahbarangStruk[i]);
             System.out.println(" total: " + totalHargaBarangStruk[i]);
         }
-            System.out.println("-------------------------------------------------------");
-            System.out.println("  Total Belanja                     Rp:" + totalBayar);
-            System.out.println("  Diskon                            Rp:" + diskon);
-            System.out.println("-------------------------------------------------------");
-            System.out.println("  TOTAL                             Rp:" + bayar);
-            System.out.println("-------------------------------------------------------");
-            System.out.println("  Tunai                             Rp:" + yangDibayarkan);
-            System.out.println("  Kembalian                         Rp:" + kembalian);
-            System.out.println("=======================================================");
-            System.out.println("            TERIMAKASIH ATAS KUNJUNGANNYA              ");
-            System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
-            System.out.println("=======================================================");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("  Total Belanja                     Rp:" + totalBayar);
+        System.out.println("  Diskon                            Rp:" + diskon);
+        System.out.println("-------------------------------------------------------");
+        System.out.println("  TOTAL                             Rp:" + bayar);
+        System.out.println("-------------------------------------------------------");
+        System.out.println("  Tunai                             Rp:" + yangDibayarkan);
+        System.out.println("  Kembalian                         Rp:" + kembalian);
+        System.out.println("=======================================================");
+        System.out.println("            TERIMAKASIH ATAS KUNJUNGANNYA              ");
+        System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
+        System.out.println("=======================================================");
     }
-        
-        //Cetak struk transfer
-        private static void cetakStrukTransfer() {
+
+    // Cetak struk transfer
+    private static void cetakStrukTransfer() {
         System.out.println("||===================================================||");
         System.out.println("||                    BAR MART                       ||");
         System.out.println("||                Struk Pembayaran                   ||");
@@ -389,7 +386,6 @@ public class SistemKasir {
         System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
         System.out.println("=======================================================");
     }
-
 
     // Fungsi Daftar Stok Barang
     private static void daftarStokBarang() {
