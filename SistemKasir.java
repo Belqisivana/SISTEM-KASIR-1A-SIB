@@ -116,13 +116,12 @@ public class SistemKasir {
                 System.out.println("||                   PILIH MENU :                     ||");
                 System.out.println("--------------------------------------------------------");
                 System.out.println("||                  1. Transaksi                      ||");
-                System.out.println("||                  2. Cetak Struk Tunai              ||");
-                System.out.println("||                  3. Cetak Struk Transfer           ||");
-                System.out.println("||                  4. Update Stok Barang             ||");
-                System.out.println("||                  5. Tambah Stok Barang             ||");
-                System.out.println("||                  6. Tambah Barang Baru             ||");
-                System.out.println("||                  7. Laporan Pendapatan             ||");
-                System.out.println("||                  8. Exit                           ||");
+                System.out.println("||                  2. Cetak Struk                    ||");
+                System.out.println("||                  3. Update Stok Barang             ||");
+                System.out.println("||                  4. Tambah Stok Barang             ||");
+                System.out.println("||                  5. Tambah Barang Baru             ||");
+                System.out.println("||                  6. Laporan Pendapatan             ||");
+                System.out.println("||                  7. Exit                           ||");
                 System.out.println("--------------------------------------------------------");
                 System.out.print("Masukkan menu pilihan Anda (1/2/3/4/5/6/7) : ");
                 menu = sc.nextInt();
@@ -132,24 +131,21 @@ public class SistemKasir {
                         transaksi();
                         break;
                     case 2:
-                        cetakStrukTunai();
+                        cetakStruk();
                         break;
                     case 3:
-                        cetakStrukTransfer();
-                        break;
-                    case 4:
                         daftarStokBarang();
-                    case 5:
+                    case 4:
                         tambahStok(sc);
                         break;
-                    case 6:
+                    case 5:
                         tambahBarangBaru(sc);
                         break;
-                    case 7:
+                    case 6:
                         laporanPendapatan();
                         break;
                 }
-            } while (menu != 7);
+            } while (menu != 6);
 
             sc.close();
         }
@@ -259,13 +255,10 @@ public class SistemKasir {
                     System.out.println("Kembalian: " + kembalian);
                 }
             } else if (metode == 2) {
-                System.out.println("-----------------------------------------------------");
-                System.out.println("||              Transfer bank BRI                  ||");
-                System.out.println("-----------------------------------------------------");
-                System.out.println("|| 2341760022----------Aqila Nur Azza              ||");
-                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany ||");
-                System.out.println("|| 2341760090----------Renald Agustinus            ||");
-                System.out.println("-----------------------------------------------------");
+                System.out.println("Transfer bank BRI");
+                System.out.println("2341760022----------Aqila Nur Azza");
+                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
+                System.out.println("2341760090----------Renald Agustinus");
                 if (totalBayar >= 200000) {
                     diskon = totalBayar * 0.15;
                     bayar = totalBayar - diskon;
@@ -279,17 +272,14 @@ public class SistemKasir {
 
             }
         } else if (member.equals("tidak")) {
+            System.out.println("Maaf anda tidak dapat diskon");
             System.out.println("Metode pembayaran");
             System.out.println("1. Tunai");
             System.out.println("2. Transfer bank BRI");
             System.out.print("Pilih metode pembayaran: ");
             int metode = sc.nextInt();
             if (metode == 1) {
-                if (totalBayar >= 300000) {
-                    diskon = totalBayar * 0.05;
                     bayar = totalBayar - diskon;
-                    System.out.println("Hasil diskon " + diskon);
-
                     System.out.println("Total yang harus dibayar: Rp " + bayar);
                     do {
                         System.out.print("Tunai : ");
@@ -301,29 +291,12 @@ public class SistemKasir {
 
                     kembalian = yangDibayarkan - bayar;
                     System.out.println("Kembalian: " + kembalian);
-                } else if (totalBayar < 300000) {
-                    System.out.println("Tidak dapat diskon");
-                    do {
-                        System.out.print("Tunai : ");
-                        bayar = totalBayar;
-                        yangDibayarkan = sc.nextDouble();
-                        if (yangDibayarkan < bayar) {
-                            System.out.println("Uang anda tidak cukup. Silahkan masukkan jumlah uang yang mencukupi");
-                        }
-                    } while (yangDibayarkan < bayar);
-                    kembalian = yangDibayarkan - totalBayar;
-                    System.out.println("Kembalian: " + kembalian);
-                }
             } else if (metode == 2) {
-                System.out.println("-----------------------------------------------------");
-                System.out.println("||              Transfer bank BRI                  ||");
-                System.out.println("-----------------------------------------------------");
-                System.out.println("|| 2341760022----------Aqila Nur Azza              ||");
-                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany ||");
-                System.out.println("|| 2341760090----------Renald Agustinus            ||");
-                System.out.println("-----------------------------------------------------");
+                System.out.println("Transfer bank BRI");
+                System.out.println("2341760022----------Aqila Nur Azza");
+                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
+                System.out.println("2341760090----------Renald Agustinus");
                 bayar = totalBayar - diskon;
-                System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
 
             }
@@ -338,7 +311,7 @@ public class SistemKasir {
     }
 
     // Fungsi Cetak Struk
-    private static void cetakStrukTunai() {
+    private static void cetakStruk() {
         System.out.println("||===================================================||");
         System.out.println("||                    BAR MART                       ||");
         System.out.println("||                Struk Pembayaran                   ||");
@@ -363,37 +336,6 @@ public class SistemKasir {
         System.out.println("-------------------------------------------------------");
         System.out.println("  Tunai                             Rp:" + yangDibayarkan);
         System.out.println("  Kembalian                         Rp:" + kembalian);
-        System.out.println("=======================================================");
-        System.out.println("            TERIMAKASIH ATAS KUNJUNGANNYA              ");
-        System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
-        System.out.println("=======================================================");
-    }
-
-    // Cetak struk transfer
-    private static void cetakStrukTransfer() {
-        System.out.println("||===================================================||");
-        System.out.println("||                    BAR MART                       ||");
-        System.out.println("||                Struk Pembayaran                   ||");
-        System.out.println("||   Jl. Soekarno Hatta No. 9 Kelurahan Jatimulyo,   ||");
-        System.out.println("|| Kecamatan Lowokwaru, Kota Malang,Jawa Timur 65141 || ");
-        System.out.println("||===================================================||");
-        System.out.println("  Kasir : " + masukkanUsername);
-        System.out.println("  Nama Pelanggan : " + namaPelanggan);
-        System.out.println("  Tanggal transaksi : " + tanggal[a - 1]);
-        System.out.println("  Nama Barang : ");
-        for (int i = 0; i < c; i++) {
-            System.out.print("  " + namaBarangStruk[i]);
-            System.out.print(" " + hargaBarangStruk[i]);
-            System.out.print(" X " + jumlahbarangStruk[i]);
-            System.out.println(" total: " + totalHargaBarangStruk[i]);
-        }
-        System.out.println("-------------------------------------------------------");
-        System.out.println("  Total Belanja                     Rp:" + totalBayar);
-        System.out.println("  Diskon                            Rp:" + diskon);
-        System.out.println("-------------------------------------------------------");
-        System.out.println("  TOTAL                             Rp:" + bayar);
-        System.out.println("Transfer Bank BRI");
-        System.out.println("BERHASIL");
         System.out.println("=======================================================");
         System.out.println("            TERIMAKASIH ATAS KUNJUNGANNYA              ");
         System.out.println("    BARANG YANG SUDAH DIBELI TIDAK DAPAT DIKEMBALIKAN  ");
@@ -437,7 +379,8 @@ public class SistemKasir {
             stokBarang[index] += jumlahTambahStok;
 
             System.out.println("---------------------------------------------------------------------------------");
-            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
+            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak "
+                    + jumlahTambahStok + " unit.");
             System.out.println("---------------------------------------------------------------------------------");
         }
     }
