@@ -219,10 +219,13 @@ public class SistemKasir {
             bayar = totalBayar - diskon;
             System.out.println("Diskon: Rp " + diskon);
             System.out.println("Total yang harus dibayar: Rp " + bayar);
-            System.out.println("Metode pembayaran");
-            System.out.println("1. Tunai");
-            System.out.println("2. Transfer bank BRI");
-            System.out.print("Pilih metode pembayaran: ");
+            System.out.println("=================================");
+            System.out.println("||  Metode pembayaran          ||");
+            System.out.println("---------------------------------");
+            System.out.println("|| 1. Tunai                    ||");
+            System.out.println("|| 2. Transfer bank BRI        ||");
+            System.out.println("=================================");
+            System.out.print("Pilih metode pembayaran (1/2): ");
             int metode = sc.nextInt();
             if (metode == 1) {
                 if (totalBayar >= 200000) {
@@ -255,10 +258,13 @@ public class SistemKasir {
                     System.out.println("Kembalian: " + kembalian);
                 }
             } else if (metode == 2) {
-                System.out.println("Transfer bank BRI");
-                System.out.println("2341760022----------Aqila Nur Azza");
-                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
-                System.out.println("2341760090----------Renald Agustinus");
+                System.out.println("========================================================");
+                System.out.println("||                Transfer bank BRI                   ||");
+                System.out.println("========================================================");
+                System.out.println("|| 2341760022----------Aqila Nur Azza                 ||");
+                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany    ||");
+                System.out.println("|| 2341760090----------Renald Agustinus               ||");
+                System.out.println("========================================================");
                 if (totalBayar >= 200000) {
                     diskon = totalBayar * 0.15;
                     bayar = totalBayar - diskon;
@@ -273,10 +279,13 @@ public class SistemKasir {
             }
         } else if (member.equals("tidak")) {
             System.out.println("Maaf anda tidak dapat diskon");
-            System.out.println("Metode pembayaran");
-            System.out.println("1. Tunai");
-            System.out.println("2. Transfer bank BRI");
-            System.out.print("Pilih metode pembayaran: ");
+            System.out.println("=================================");
+            System.out.println("||  Metode pembayaran          ||");
+            System.out.println("---------------------------------");
+            System.out.println("|| 1. Tunai                    ||");
+            System.out.println("|| 2. Transfer bank BRI        ||");
+            System.out.println("=================================");
+             System.out.print("Pilih metode pembayaran (1/2) : ");
             int metode = sc.nextInt();
             if (metode == 1) {
                     bayar = totalBayar - diskon;
@@ -292,10 +301,13 @@ public class SistemKasir {
                     kembalian = yangDibayarkan - bayar;
                     System.out.println("Kembalian: " + kembalian);
             } else if (metode == 2) {
-                System.out.println("Transfer bank BRI");
-                System.out.println("2341760022----------Aqila Nur Azza");
-                System.out.println("2341760075----------Belqis Ivana Fidelia Arfany");
-                System.out.println("2341760090----------Renald Agustinus");
+                System.out.println("========================================================");
+                System.out.println("||                Transfer bank BRI                   ||");
+                System.out.println("========================================================");
+                System.out.println("|| 2341760022----------Aqila Nur Azza                 ||");
+                System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany    ||");
+                System.out.println("|| 2341760090----------Renald Agustinus               ||");
+                System.out.println("========================================================");
                 bayar = totalBayar - diskon;
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
 
@@ -360,29 +372,30 @@ public class SistemKasir {
 
     // Fungsi Tambah Stok
     static void tambahStok(Scanner sc) {
+        int index = -1;
+        do {
         System.out.print("Masukkan nama barang: ");
         inputNamaBarang = sc.nextLine();
-        int index = -1;
-        for (int i = 0; i < namaBarang.length; i++) {
+        for (int i = 0; i < jmlBarang; i++) {
             if (namaBarang[i].equalsIgnoreCase(inputNamaBarang)) {
                 index = i;
                 break;
             }
+            }
+        if (index == -1 ) {
+            System.out.println("Barang tidak ditemukan");
         }
-        if (index == -1) {
-            System.out.println("Barang tidak ditemukan.");
-        } else {
+    } while (index == -1);
+    
             System.out.println("Harga: " + hargaBarang[index]);
-
+    
             System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
             int jumlahTambahStok = sc.nextInt();
             stokBarang[index] += jumlahTambahStok;
-
+    
             System.out.println("---------------------------------------------------------------------------------");
-            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak "
-                    + jumlahTambahStok + " unit.");
+            System.out.println("Stok barang " + namaBarang[index] + " berhasil ditambahkan sebanyak " + jumlahTambahStok + " unit.");
             System.out.println("---------------------------------------------------------------------------------");
-        }
     }
 
     // Fungsi Tambah Barang Baru
