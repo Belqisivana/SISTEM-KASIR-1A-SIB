@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class SistemKasir {
 
     static String beliLagi, member, namaKasir, namaPelanggan, inputNamaBarang, targetBarang, namaBarangBaru,
-            cariIndexBarang, SimpleDateFormat, s, dateFormatetted, masukkanUsername, masukkanPassword, akun, status;
+            cariIndexBarang, masukkanUsername, masukkanPassword, akun, status;
     static int jmlBarang = 0, totalBayar = 0, stokBarangBaru, tambahStokBarang, metodePembayaran, hargaBarangBaru, menu,
             menuManager;
     static double diskon = 0, bayar, total, tunai, kembalian, yangDibayarkan, totPendapatanBulanan = 0;
@@ -107,7 +107,7 @@ public class SistemKasir {
                         laporanPendapatan();
                         break;
                 }
-            } while (menuManager != 5);
+            } while (menuManager != 2);
 
             sc.close();
         } else {
@@ -135,6 +135,7 @@ public class SistemKasir {
                         break;
                     case 3:
                         daftarStokBarang();
+                        break;
                     case 4:
                         tambahStok(sc);
                         break;
@@ -144,8 +145,12 @@ public class SistemKasir {
                     case 6:
                         laporanPendapatan();
                         break;
+                    case 7 :
+                        System.out.println("Berhasil Keluar!");
+                        break;
+                    default: System.out.println("Silahkan masukkan menu yang tersedia!(1/2/3/4/5/6/7)");
                 }
-            } while (menu != 6);
+            } while (menu != 7);
 
             sc.close();
         }
@@ -369,7 +374,7 @@ public class SistemKasir {
         System.out.println("--------------------------------------------");
 
     }
-
+    
     // Fungsi Tambah Stok
     static void tambahStok(Scanner sc) {
         int index = -1;
