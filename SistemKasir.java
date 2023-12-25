@@ -87,7 +87,7 @@ public class SistemKasir {
             }
         }
 
-         if (isManager) {
+        if (isManager) {
             int pilih;
             do {
                 System.out.println("--------------------------------------------------------");
@@ -106,16 +106,16 @@ public class SistemKasir {
                     case 2:
                         laporanPendapatan();
                         break;
-                    case 3 : 
+                    case 3:
                         System.out.println("Berhasil keluar");
                         break;
-                    default :
+                    default:
                         System.out.println("Silahkan masukkan menu yang tersedia (1/2/3) : ");
                         break;
                 }
             } while (menuManager != 3);
+
             sc.close();
-             
         } else {
             do {
                 System.out.println("--------------------------------------------------------");
@@ -151,10 +151,11 @@ public class SistemKasir {
                     case 6:
                         laporanPendapatan();
                         break;
-                    case 7 :
+                    case 7:
                         System.out.println("Berhasil Keluar!");
                         break;
-                    default: System.out.println("Silahkan masukkan menu yang tersedia!(1/2/3/4/5/6/7)");
+                    default:
+                        System.out.println("Silahkan masukkan menu yang tersedia!(1/2/3/4/5/6/7)");
                 }
             } while (menu != 7);
 
@@ -163,7 +164,7 @@ public class SistemKasir {
     }
 
     // Fungsi Transaksi
-    public static void transaksi() {
+    static void transaksi() {
         Scanner sc = new Scanner(System.in);
         c = 0;
         d = 0;
@@ -296,21 +297,21 @@ public class SistemKasir {
             System.out.println("|| 1. Tunai                    ||");
             System.out.println("|| 2. Transfer bank BRI        ||");
             System.out.println("=================================");
-             System.out.print("Pilih metode pembayaran (1/2) : ");
+            System.out.print("Pilih metode pembayaran (1/2) : ");
             int metode = sc.nextInt();
             if (metode == 1) {
-                    bayar = totalBayar - diskon;
-                    System.out.println("Total yang harus dibayar: Rp " + bayar);
-                    do {
-                        System.out.print("Tunai : ");
-                        yangDibayarkan = sc.nextDouble();
-                        if (yangDibayarkan < bayar) {
-                            System.out.println("Uang anda tidak cukup. Silahkan masukkan jumlah uang yang mencukupi");
-                        }
-                    } while (yangDibayarkan < bayar);
+                bayar = totalBayar - diskon;
+                System.out.println("Total yang harus dibayar: Rp " + bayar);
+                do {
+                    System.out.print("Tunai : ");
+                    yangDibayarkan = sc.nextDouble();
+                    if (yangDibayarkan < bayar) {
+                        System.out.println("Uang anda tidak cukup. Silahkan masukkan jumlah uang yang mencukupi");
+                    }
+                } while (yangDibayarkan < bayar);
 
-                    kembalian = yangDibayarkan - bayar;
-                    System.out.println("Kembalian: " + kembalian);
+                kembalian = yangDibayarkan - bayar;
+                System.out.println("Kembalian: " + kembalian);
             } else if (metode == 2) {
                 System.out.println("========================================================");
                 System.out.println("||                Transfer bank BRI                   ||");
@@ -334,7 +335,7 @@ public class SistemKasir {
     }
 
     // Fungsi Cetak Struk
-    private static void cetakStruk() {
+    static void cetakStruk() {
         System.out.println("||===================================================||");
         System.out.println("||                    BAR MART                       ||");
         System.out.println("||                Struk Pembayaran                   ||");
@@ -366,7 +367,7 @@ public class SistemKasir {
     }
 
     // Fungsi Daftar Stok Barang
-    private static void daftarStokBarang() {
+    static void daftarStokBarang() {
         // Menampilkan daftar barang
         System.out.println("Daftar Barang:");
         System.out.println("--------------------------------------------");
@@ -380,53 +381,53 @@ public class SistemKasir {
         System.out.println("--------------------------------------------");
 
     }
-    
+
     // Fungsi Tambah Stok
-           static void tambahStok(Scanner sc) {
-            boolean cek = false;
-            int index = -1;
-            System.out.print("Masukkan nama barang: ");
-            inputNamaBarang = sc.nextLine();
-            do {
-            for (int i = 0; i < namaBarang.length; i++ ) {
-                if((inputNamaBarang.equalsIgnoreCase(namaBarang[i]))) {
-                cek = true;
-                break;
+    static void tambahStok(Scanner sc) {
+        boolean cek = false;
+        int index = -1;
+        System.out.print("Masukkan nama barang: ");
+        inputNamaBarang = sc.nextLine();
+        do {
+            for (int i = 0; i < namaBarang.length; i++) {
+                if ((inputNamaBarang.equalsIgnoreCase(namaBarang[i]))) {
+                    cek = true;
+                    break;
+                }
             }
-        }
-        if (cek == false) {
+            if (cek == false) {
                 System.out.println("==============================");
                 System.out.println("|  INPUTAN GAGAL, COBA LAGI  |");
                 System.out.println("==============================");
                 System.out.print("Masukkan nama barang: ");
-                inputNamaBarang = sc.nextLine(); 
-        }
-            }while (cek == false);
-            do {
+                inputNamaBarang = sc.nextLine();
+            }
+        } while (cek == false);
+        do {
             for (int i = 0; i < namaBarang.length; i++) {
-                    if (namaBarang[i].equalsIgnoreCase(inputNamaBarang)) {
+                if (namaBarang[i].equalsIgnoreCase(inputNamaBarang)) {
                     index = i;
                     break;
-                 }
-                 }
-                    if (index == -1) {
-                        System.out.println("Barang tidak ditemukan.");
-        }
+                }
+            }
+            if (index == -1) {
+                System.out.println("Barang tidak ditemukan.");
+            }
         } while (index == -1);
-                            System.out.println("Harga: " + hargaBarang[index]);
+        System.out.println("Harga: " + hargaBarang[index]);
 
-                            System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
-                            int jumlahTambahStok = sc.nextInt();
-                            stokBarang[index] += jumlahTambahStok;
+        System.out.print("Masukkan jumlah barang yang akan ditambahkan ke stok: ");
+        int jumlahTambahStok = sc.nextInt();
+        stokBarang[index] += jumlahTambahStok;
 
-                            System.out.println("---------------------------------------------------------------------------------");
-                            System.out.println("Stok barang " + namaBarang[index] + " berhasil diupdate");
-                            System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Stok barang " + namaBarang[index] + " berhasil diupdate");
+        System.out.println("---------------------------------------------------------------------------------");
 
     }
 
     // Fungsi Tambah Barang Baru
-    private static void tambahBarangBaru(Scanner sc) {
+    static void tambahBarangBaru(Scanner sc) {
         boolean barangSudahAda;
         do {
             System.out.print("Masukkan barang baru: ");
@@ -466,7 +467,7 @@ public class SistemKasir {
     }
 
     // Fungsi Laporan Pendapatan
-    private static void laporanPendapatan() {
+    static void laporanPendapatan() {
         for (int i = 0; i < a; i++) {
             System.out.print("Total Pendapatan tanggal " + tanggal[i] + " : ");
             System.out.println(totPendapatanHarian[i]);
