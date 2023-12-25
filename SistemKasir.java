@@ -87,7 +87,7 @@ public class SistemKasir {
             }
         }
 
-        if (isManager) {
+         if (isManager) {
             int pilih;
             do {
                 System.out.println("--------------------------------------------------------");
@@ -106,10 +106,16 @@ public class SistemKasir {
                     case 2:
                         laporanPendapatan();
                         break;
+                    case 3 : 
+                        System.out.println("Berhasil keluar");
+                        break;
+                    default :
+                        System.out.println("Silahkan masukkan menu yang tersedia (1/2/3) : ");
+                        break;
                 }
-            } while (menuManager != 2);
-
+            } while (menuManager != 3);
             sc.close();
+             
         } else {
             do {
                 System.out.println("--------------------------------------------------------");
