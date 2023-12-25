@@ -257,16 +257,20 @@ public class SistemKasir {
                     kembalian = yangDibayarkan - bayar;
                     System.out.println("Kembalian: " + kembalian);
                 } else if (totalBayar < 200000) {
-                    System.out.println("Tidak dapat diskon");
+                    diskon = totalBayar * 0.10;
+                    bayar = totalBayar - diskon;
+                    System.out.println("Hasil diskon " + diskon);
+
+                    System.out.println("Total yang harus dibayar: Rp " + bayar);
                     do {
                         System.out.print("Tunai : ");
-                        bayar = totalBayar;
+                        bayar = totalBayar - diskon;
                         yangDibayarkan = sc.nextDouble();
                         if (yangDibayarkan < bayar) {
                             System.out.println("Uang anda tidak cukup. Silahkan masukkan jumlah uang yang mencukupi");
                         }
                     } while (yangDibayarkan < bayar);
-                    kembalian = yangDibayarkan - totalBayar;
+                    kembalian = yangDibayarkan - bayar;
                     System.out.println("Kembalian: " + kembalian);
                 }
             } else if (metode == 2) {
