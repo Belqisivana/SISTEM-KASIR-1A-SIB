@@ -298,7 +298,8 @@ public class SistemKasir {
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
-
+                yangDibayarkan = 0;
+                kembalian = 0;
             }
         } else if (member.equals("tidak")) {
             System.out.println("Maaf anda tidak dapat diskon");
