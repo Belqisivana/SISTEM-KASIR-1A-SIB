@@ -197,9 +197,15 @@ public class SistemKasir {
             System.out.println("Harga: " + hargaBarang[index]);
             hargaBarangStruk[d] = hargaBarang[index];
 
+           
             if (index != -1) {
+                do {
                 System.out.print("Masukkan jumlah barang: ");
                 jmlBarang = sc.nextInt();
+                if (jmlBarang > stokBarang[index]) {
+                    System.out.println("Jumlah barang melebihi jumlah stok barang. Masukkan jumlah barang kembali");
+                }
+            } while (jmlBarang > stokBarang[index]);
                 stokBarang[index] -= jmlBarang;
                 jumlahbarangStruk[d] = jmlBarang;
                 System.out.print("Beli lagi (y/n)? ");
