@@ -286,7 +286,9 @@ public class SistemKasir {
                     bayar = totalBayar - diskon;
                     System.out.println("Hasil diskon " + diskon);
                 } else if (totalBayar < 200000) {
-                    System.out.println("Tidak dapat diskon");
+                    diskon = totalBayar * 0.10;
+                    bayar = totalBayar - diskon;
+                    System.out.println("Hasil diskon " + diskon);
                 }
                 bayar = totalBayar - diskon;
                 System.out.println("Diskon: Rp " + diskon);
@@ -304,7 +306,7 @@ public class SistemKasir {
             System.out.print("Pilih metode pembayaran (1/2) : ");
             int metode = sc.nextInt();
             if (metode == 1) {
-                bayar = totalBayar - diskon;
+                bayar = totalBayar;
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
                 do {
                     System.out.print("Tunai : ");
@@ -324,7 +326,7 @@ public class SistemKasir {
                 System.out.println("|| 2341760075----------Belqis Ivana Fidelia Arfany    ||");
                 System.out.println("|| 2341760090----------Renald Agustinus               ||");
                 System.out.println("========================================================");
-                bayar = totalBayar - diskon;
+                bayar = totalBayar;
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
 
             }
