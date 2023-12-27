@@ -197,15 +197,14 @@ public class SistemKasir {
             System.out.println("Harga: " + hargaBarang[index]);
             hargaBarangStruk[d] = hargaBarang[index];
 
-           
             if (index != -1) {
                 do {
-                System.out.print("Masukkan jumlah barang: ");
-                jmlBarang = sc.nextInt();
-                if (jmlBarang > stokBarang[index]) {
-                    System.out.println("Jumlah barang melebihi jumlah stok barang. Masukkan jumlah barang kembali");
-                }
-            } while (jmlBarang > stokBarang[index]);
+                    System.out.print("Masukkan jumlah barang: ");
+                    jmlBarang = sc.nextInt();
+                    if (jmlBarang > stokBarang[index]) {
+                        System.out.println("Jumlah barang melebihi jumlah stok barang. Masukkan jumlah barang kembali");
+                    }
+                } while (jmlBarang > stokBarang[index]);
                 stokBarang[index] -= jmlBarang;
                 jumlahbarangStruk[d] = jmlBarang;
                 System.out.print("Beli lagi (y/n)? ");
@@ -333,6 +332,8 @@ public class SistemKasir {
                 System.out.println("|| 2341760090----------Renald Agustinus               ||");
                 System.out.println("========================================================");
                 bayar = totalBayar;
+                yangDibayarkan = 0;
+                kembalian = 0;
                 System.out.println("Total yang harus dibayar: Rp " + bayar);
 
             }
